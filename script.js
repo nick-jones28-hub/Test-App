@@ -1,16 +1,3 @@
-// Register the service worker for caching assets
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then((registration) => {
-        console.log('Service Worker registered with scope:', registration.scope);
-      })
-      .catch((error) => {
-        console.log('Service Worker registration failed:', error);
-      });
-  });
-}
-
 // Function to log time locally when offline
 function logTimeOffline(value) {
   const timestamp = new Date().toLocaleString();
