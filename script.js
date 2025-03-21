@@ -30,21 +30,26 @@ function syncOfflineLogs() {
   const logs = JSON.parse(localStorage.getItem("timeLogs")) || [];
 
   if (logs.length > 0) {
-    logs.forEach(log => {
+    logs.forEach((log, index) => {
       // Send data to Google Apps Script via fetch()
       fetch("https://script.google.com/macros/s/AKfycby1qXSnvUE3O7aq4a1KBSpA1tI_9Dr0CTdlD8lycvkJX-GI2HO-ntZwrGj8NZrMQTF6/exec", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify([log.timestamp, log.value])
       })
- .then(response => response.text())
-.then(data => console.log("Server response:", data))
-.catch(error => console.error("Error:", error));
+        .then(response => response.text())
+        .then(data => {
+          console.log("Server response:", data);
 
-    // Clear localStorage once the data is synced
-    localStorage.removeItem("timeLogs");
+          // Remove successfully synced log from localStorage
+          logs.splice(index, 1);  // Remove the synced log
+          localStorage.setItem("timeLogs", JSON.stringify(logs));  // Save updated logs
+        })
+        .catch(error => console.error("Error:", error));
+    });
   }
-}}
+}
+
 
 // Check if the user is online and sync data if possible
 window.addEventListener("online", syncOfflineLogs);
