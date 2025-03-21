@@ -44,7 +44,7 @@ function syncOfflineLogs() {
     // Clear localStorage once the data is synced
     localStorage.removeItem("timeLogs");
   }
-}
+}}
 
 // Check if the user is online and sync data if possible
 window.addEventListener("online", syncOfflineLogs);
