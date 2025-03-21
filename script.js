@@ -35,7 +35,8 @@ function syncOfflineLogs() {
       fetch("https://script.google.com/macros/s/AKfycby1qXSnvUE3O7aq4a1KBSpA1tI_9Dr0CTdlD8lycvkJX-GI2HO-ntZwrGj8NZrMQTF6/exec", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify([log.timestamp, log.value])
+        body: JSON.stringify([log.timestamp, log.value]),
+        mode: "no-cors"
       })
         .then(response => response.text())
         .then(data => {
