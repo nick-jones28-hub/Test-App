@@ -32,7 +32,7 @@ function syncOfflineLogs() {
   if (logs.length > 0) {
     logs.forEach(log => {
       // Send data to Google Apps Script via fetch()
-      fetch("https://script.google.com/macros/s/AKfycbyZPO0XoCwZAbZV84MsHcMUqaYPV1jifI5_RAq6rSnI-VGg0Qx94TdVHnuu-A3MNtLS/exec", {
+      fetch("https://script.google.com/macros/s/AKfycby1qXSnvUE3O7aq4a1KBSpA1tI_9Dr0CTdlD8lycvkJX-GI2HO-ntZwrGj8NZrMQTF6/exec", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify([log.timestamp, log.value])
