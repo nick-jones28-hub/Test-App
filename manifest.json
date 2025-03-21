@@ -1,5 +1,5 @@
 {
-    "name": "Time Logger",
+    "name": "Time-Logger",
     "short_name": "Logger",
     "start_url": "/index.html",
     "display": "standalone",
